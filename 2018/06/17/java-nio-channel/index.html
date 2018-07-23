@@ -94,12 +94,22 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="那美克星">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="1、通道基础通道（Channel）是 java.nio 的第二个主要创新。它们既不是一个扩展也不是一项增强，而是全新、极好的 Java I/O 示例，提供与 I/O 服务的直接连接。 Channel 用于在字节缓冲区和位于通道另一侧的实体（通常是一个文件或套接字）之间有效地传输数据  多数情况下，通道与操作系统的文件描述符（File Descriptor）和文件句柄（File Handle）有着一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaNIO学习笔记--Channel（通道）">
+<meta property="og:url" content="http://yoursite.com/2018/06/17/java-nio-channel/index.html">
 <meta property="og:site_name" content="那美克星">
+<meta property="og:description" content="1、通道基础通道（Channel）是 java.nio 的第二个主要创新。它们既不是一个扩展也不是一项增强，而是全新、极好的 Java I/O 示例，提供与 I/O 服务的直接连接。 Channel 用于在字节缓冲区和位于通道另一侧的实体（通常是一个文件或套接字）之间有效地传输数据  多数情况下，通道与操作系统的文件描述符（File Descriptor）和文件句柄（File Handle）有着一">
+<meta property="og:image" content="d:/DELL/npm/blog/source/_posts/1532328228905.png">
+<meta property="og:image" content="d:/DELL/npm/blog/source/_posts/1532332954565.png">
+<meta property="og:image" content="d:/DELL/npm/blog/source/_posts/1532338664551.png">
+<meta property="og:image" content="d:/DELL/npm/blog/source/_posts/1532358532450.png">
+<meta property="og:image" content="d:/DELL/npm/blog/source/_posts/1532359375876.png">
+<meta property="og:updated_time" content="2018-07-23T15:33:44.062Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="那美克星">
+<meta name="twitter:title" content="JavaNIO学习笔记--Channel（通道）">
+<meta name="twitter:description" content="1、通道基础通道（Channel）是 java.nio 的第二个主要创新。它们既不是一个扩展也不是一项增强，而是全新、极好的 Java I/O 示例，提供与 I/O 服务的直接连接。 Channel 用于在字节缓冲区和位于通道另一侧的实体（通常是一个文件或套接字）之间有效地传输数据  多数情况下，通道与操作系统的文件描述符（File Descriptor）和文件句柄（File Handle）有着一">
+<meta name="twitter:image" content="d:/DELL/npm/blog/source/_posts/1532328228905.png">
 
 
 
@@ -128,13 +138,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/17/java-nio-channel/"/>
 
 
 
 
 
-  <title>那美克星</title>
+  <title>JavaNIO学习笔记--Channel（通道） | 那美克星</title>
   
 
 
@@ -159,9 +169,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -244,312 +252,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/19/mysql/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="kx">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="那美克星">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/19/mysql/" itemprop="url">Mysql优化</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-19T10:59:18+08:00">
-                2018-07-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Mysql优化"><a href="#Mysql优化" class="headerlink" title="Mysql优化"></a>Mysql优化</h2><h3 id="mysql如何实现优化？"><a href="#mysql如何实现优化？" class="headerlink" title="mysql如何实现优化？"></a>mysql如何实现优化？</h3><ol>
-<li>表的设计合理化(符合3NF)</li>
-<li>添加适当索引(index) （四种: 普通索引、主键索引、唯一索引unique、全文索引）</li>
-<li>分表技术(水平分割、垂直分割)</li>
-<li>读写 （ 写: update/delete/add ） 分离</li>
-<li>存储过程 [模块化编程，可以提高速度]</li>
-<li>对mysql配置优化 （配置最大并发数my.ini, 调整缓存大小 ）</li>
-<li>mysql服务器升级</li>
-<li>定时的去清除不需要的数据,定时进行碎片整理(MyISAM)</li>
-<li>SQL语句调优</li>
-</ol>
-<h4 id="1、数据库设计"><a href="#1、数据库设计" class="headerlink" title="1、数据库设计"></a>1、数据库设计</h4><p>减少冗余量、遵循3F</p>
-<p>三大范式</p>
-<ul>
-<li><p>1NF是对属性的原子性约束，要求属性(列)具有原子性，不可再分解；(只要是关系型数据库都满足1NF)</p>
-<p>是否保证原子（看业务）</p>
-<p>例如：address可分为省市区，具体看业务需求</p>
-</li>
-<li><p>2NF是对记录的惟一性约束，表中的记录是唯一的, 就满足2NF, 通常我们设计一个主键来实现，主键不能包含业务逻辑</p>
-<p>一般订单项目中，不使用id作为订单号，再做一个orderNum作为订单号</p>
-<p>1保证安全，内部rpc调用用id，外部用orderNum</p>
-<p>2分布式系统解决并发生成订单号</p>
-<p>例：保证抢票中，订单号不会重复生成（幂等性）分布式锁、redis中提前生成好订单，直接取</p>
-</li>
-<li><p>3NF是对字段冗余性的约束，它要求字段没有冗余。 没有冗余的数据库设计可以做到</p>
-</li>
-<li><p>但是，没有冗余的数据库未必是最好的数据库，有时为了提高运行效率，就必须降低范式标准，适当保留冗余数据。具体做法是：<br>在概念数据模型设计时遵守第三范式，降低范式标准的工作放到物理数据模型设计时考虑。降低范式就是增加字段，允许冗余</p>
-</li>
-</ul>
-<h4 id="2、分表分库"><a href="#2、分表分库" class="headerlink" title="2、分表分库"></a>2、分表分库</h4><ol>
-<li><p>分库（垂直拆分）</p>
-<p>垂直拆分就是要把表按模块划分到不同<strong>数据库</strong>表中（当然原则还是不破坏第三范式），这种拆分在大型网站的演变过程中是很常见的。当一个网站还在很小的时候，只有小量的人来开发和维护，各模块和表都在一起，当网站不断丰富和壮大的时候，也会变成多个子系统来支撑，这时就有按模块和功能把表划分出来的需求。其实，相对于垂直切分更进一步的是服务化改造，说得简单就是要把原来强耦合的系统拆分成多个弱耦合的服务，通过服务间的调用来满足业务需求看，因此表拆出来后要通过服务的形式暴露出去，而不是直接调用不同模块的表，淘宝在架构不断演变过程，最重要的一环就是服务化改造，把用户、交易、店铺、宝贝这些核心的概念抽取成独立的服务，也非常有利于进行局部的优化和治理，保障核心模块的稳定性</p>
-<p>垂直拆分用于分布式场景</p>
-</li>
-<li><p>分表（水平拆分）</p>
-<p>上面谈到垂直切分只是把表按模块划分到不同数据库，但没有解决单表大数据量的问题，而水平切分就是要把一个表按照某种规则把数据划分到不同表或数据库里。例如像计费系统，通过按时间来划分表就比较合适，因为系统都是处理某一时间段的数据。而像SaaS应用，通过按用户维度来划分数据比较合适，因为用户与用户之间的隔离的，一般不存在处理多个用户数据的情况，简单的按user_id范围来水平切分</p>
-<p>使用水平分割拆分表，具体根据业务需求，有的按照注册时间、取摸、账号规则、年份等，也可以按照取模算法分表</p>
-</li>
-</ol>
-<h4 id="3、SQL优化-–慢查询"><a href="#3、SQL优化-–慢查询" class="headerlink" title="3、SQL优化 –慢查询"></a>3、SQL优化 –慢查询</h4><h5 id="show-status"><a href="#show-status" class="headerlink" title="show status"></a>show status</h5><p>使用<code>show status</code>查看MySQL服务器状态信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//mysql数据库启动了多少时间</span><br><span class="line">show status like &apos;uptime&apos;; </span><br><span class="line"></span><br><span class="line">//类推 update  delete（显示数据库的查询，更新，添加，删除的次数）</span><br><span class="line">show  stauts like &apos;com_select&apos;  show stauts like &apos;com_insert&apos;</span><br><span class="line"></span><br><span class="line">//如果你不写 [session|global] 默认是session 会话，指取出当前窗口的执行，如果你想看所有(从mysql 启动到现在，则应该 global)</span><br><span class="line">show [session|global] status like</span><br><span class="line"></span><br><span class="line">//显示到mysql数据库的连接数</span><br><span class="line">show status like  &apos;connections &apos;; </span><br><span class="line">//显示慢查询次数</span><br><span class="line">show status like &apos;slow_queries&apos;;</span><br></pre></td></tr></table></figure>
-<p>什么是慢查询</p>
-<p>mysql默认慢查询是10s，如果超过10s就是慢查询，可以修改慢查询时间</p>
-<p>查询慢查询时间</p>
-<p><code>show variables like &#39;long_query_time&#39;</code></p>
-<p>修改慢查询为一秒</p>
-<p><code>set long_query_time = 1</code></p>
-<p>慢查询都会有日志存放</p>
-<p><code>show status like &#39;slow_queries&#39;</code> </p>
-<p>在默认情况下，mysql不会记录慢查询，需要在启动mysql时候，指定记录慢查询才可以</p>
-<h3 id="4、索引"><a href="#4、索引" class="headerlink" title="4、索引"></a>4、索引</h3><p>​    索引用来快速地寻找那些具有特定值的记录，所有MySQL索引都以B-树的形式保存。如果没有索引，执行查询时MySQL必须从第一个记录开始扫描整个表的所有记录，直至找到符合要求的记录。表里面的记录数量越多，这个操作的代价就越高。如果作为搜索条件的列上已经创建了索引，MySQL无需扫描任何记录即可迅速得到目标记录所在的位置。如果表有1000个记录，通过索引查找记录至少要比顺序扫描记录快100倍。</p>
-<h4 id="5、MySQL主从复制"><a href="#5、MySQL主从复制" class="headerlink" title="5、MySQL主从复制"></a>5、MySQL主从复制</h4><p>​    主从复制</p>
-<p>​    读写分离</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/17/java-concurrent-lock/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="kx">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="那美克星">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/17/java-concurrent-lock/" itemprop="url">Java并发编程实战学习笔记--锁Lock</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-17T17:05:48+08:00">
-                2018-07-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="读写锁（ReadWriteLock）"><a href="#读写锁（ReadWriteLock）" class="headerlink" title="读写锁（ReadWriteLock）"></a>读写锁（ReadWriteLock）</h3><p>ReentrantLock实现了一种标准的互斥锁：每次最多只有一个线程持有ReentrantLock。但对维护数据完整性来说，互斥过于强硬，不必要地限制了并发性，因为大部分操作都是读操作，如果能够放宽加锁需求，允许多个执行读操作的线程同时访问数据结构，那么将提高程序的性能。</p>
-<p>与Lock不同，读写锁实现的加锁策略中，允许多个读操作同时进行，但每次只允许一个写操作</p>
-<!--程序清单：ReadWriteLock接口-->
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ReadWriteLock</span></span>&#123;</span><br><span class="line">    <span class="function">Lock <span class="title">readLock</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function">Lock <span class="title">writeLock</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在读锁和写锁之间的交互可以采用多种实现方式，ReadWriteLock可选实现包括：</p>
-<ul>
-<li><strong>释放优先</strong>：</li>
-<li><strong>读线程插队</strong></li>
-<li><strong>重入性</strong></li>
-<li><strong>降级</strong></li>
-<li><strong>升级</strong></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
 
   
 
@@ -579,9 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/17/java-nio-channel/" itemprop="url">JavaNIO学习笔记--Channel（通道）</a></h1>
+          <h1 class="post-title" itemprop="name headline">JavaNIO学习笔记--Channel（通道）</h1>
         
 
         <div class="post-meta">
@@ -631,9 +334,7 @@
       
 
       
-        
-          
-            <h1 id="1、通道基础"><a href="#1、通道基础" class="headerlink" title="1、通道基础"></a>1、通道基础</h1><p>通道（Channel）是 java.nio 的第二个主要创新。它们既不是一个扩展也不是一项增强，而是全新、极好的 Java I/O 示例，提供与 I/O 服务的直接连接。 Channel 用于在字节缓冲区和位于通道另一侧的实体（通常是一个文件或套接字）之间有效地传输数据 </p>
+        <h1 id="1、通道基础"><a href="#1、通道基础" class="headerlink" title="1、通道基础"></a>1、通道基础</h1><p>通道（Channel）是 java.nio 的第二个主要创新。它们既不是一个扩展也不是一项增强，而是全新、极好的 Java I/O 示例，提供与 I/O 服务的直接连接。 Channel 用于在字节缓冲区和位于通道另一侧的实体（通常是一个文件或套接字）之间有效地传输数据 </p>
 <p>多数情况下，通道与操作系统的文件描述符（File Descriptor）和文件句柄（File Handle）有着一对一的关系。虽然通道比文件描述符更广义，但您将经常使用到的多数通道都是连接到开放的文件描述符的。 Channel 类提供维持平台独立性所需的抽象过程，不过仍然会模拟现代操作系统本身的 I/O 性能 </p>
 <!--程序清单：Channel接口-->
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> java.nio.channels;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Channel</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isOpen</span><span class="params">( )</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">( )</span> <span class="keyword">throws</span> IOException</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -772,8 +473,6 @@
 <p>一个工具类（<code>java.nio.channels.Channels</code> 的一个稍微重复的名称）定义了几种静态的工厂方法以使通道可以更加容易地同流和读写器互联。下图对这些方法做了一个汇总 </p>
 <p><img src="D:\DELL\npm\blog\source\_posts\1532359375876.png" alt="53235937587"></p>
 
-          
-        
       
     </div>
     
@@ -790,135 +489,32 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/22/first-test/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="kx">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="那美克星">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/22/first-test/" itemprop="url">前端图标字体 .webfont</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-22T21:58:13+08:00">
-                2018-03-22
-              </time>
+              <a href="/2018/03/22/first-test/" rel="next" title="前端图标字体 .webfont">
+                <i class="fa fa-chevron-left"></i> 前端图标字体 .webfont
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
+              <a href="/2018/07/17/java-concurrent-lock/" rel="prev" title="Java并发编程实战学习笔记--锁Lock">
+                Java并发编程实战学习笔记--锁Lock <i class="fa fa-chevron-right"></i>
+              </a>
             
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>最近要独自开发一个控制台，但是前端不咋会，就用了<a href="https://adminlte.io/" target="_blank" rel="noopener">AdminLTE</a>这个模板，这个模板还是很好用的（纯Html+CSS+JS），也非常好看，适合不会写前端的后端快速搭建前端。（比如我）<br>然后我用的时候觉得图标不够用，想自己增加图标，就发现图标都是这样定义的<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"ion ion-alert-before"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p> 这个类是在<code>ionicons.css</code>这个包中定义的   <em>(这是一个图标框架，推荐使用)</em><br> 定位到这个css文件，发现是这样的（截取了一部分）</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">font-face</span> &#123; </span><br><span class="line"><span class="attribute">font-family</span>: <span class="string">"Ionicons"</span>; </span><br><span class="line"><span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">"../fonts/ionicons.eot?v=2.0.0"</span>); </span><br><span class="line"><span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">"../fonts/ionicons.eot?v=2.0.0#iefix"</span>) <span class="built_in">format</span>(<span class="string">"embedded-opentype"</span>), <span class="built_in">url</span>(<span class="string">"../fonts/ionicons.ttf?v=2.0.0"</span>) <span class="built_in">format</span>(<span class="string">"truetype"</span>), </span><br><span class="line"><span class="built_in">url</span>(<span class="string">"../fonts/ionicons.woff?v=2.0.0"</span>) <span class="built_in">format</span>(<span class="string">"woff"</span>), </span><br><span class="line"><span class="built_in">url</span>(<span class="string">"../fonts/ionicons.svg?v=2.0.0#Ionicons"</span>) <span class="built_in">format</span>(<span class="string">"svg"</span>); </span><br><span class="line"><span class="attribute">font-weight</span>: normal; <span class="attribute">font-style</span>: normal; </span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.ion</span>, <span class="selector-class">.ionicons</span> &#123; </span><br><span class="line"><span class="attribute">display</span>: inline-block; </span><br><span class="line"><span class="attribute">font-family</span>: <span class="string">"Ionicons"</span>; </span><br><span class="line"><span class="attribute">speak</span>: none; </span><br><span class="line"><span class="attribute">font-style</span>: normal; </span><br><span class="line"><span class="attribute">font-weight</span>: normal; </span><br><span class="line"><span class="attribute">font-variant</span>: normal; </span><br><span class="line"><span class="attribute">text-transform</span>: none; </span><br><span class="line"><span class="attribute">text-rendering</span>: auto; </span><br><span class="line"><span class="attribute">line-height</span>: <span class="number">1</span>; </span><br><span class="line"><span class="attribute">-webkit-font-smoothing</span>: antialiased; </span><br><span class="line"><span class="attribute">-moz-osx-font-smoothing</span>: grayscale;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.ion-alert</span><span class="selector-pseudo">:before</span> &#123; <span class="attribute">content</span>: <span class="string">"\f101"</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.ion-alert-circled</span><span class="selector-pseudo">:before</span> &#123; <span class="attribute">content</span>: <span class="string">"\f100"</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.ion-android-add</span><span class="selector-pseudo">:before</span> &#123; <span class="attribute">content</span>: <span class="string">"\f2c7"</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.ion-android-add-circle</span><span class="selector-pseudo">:before</span> &#123; <span class="attribute">content</span>: <span class="string">"\f359"</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.ion-android-alarm-clock</span><span class="selector-pseudo">:before</span> &#123; <span class="attribute">content</span>: <span class="string">"\f35a"</span>; &#125;</span><br></pre></td></tr></table></figure>
-<p>这是神魔咧！为什么在<code>:before{}</code>里面加了个<code>&quot;content:\fxxx&quot;</code>就可以变成图标啊 还有上面<code>@font-face</code>那堆是什么啊</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -928,138 +524,11 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/22/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="kx">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="那美克星">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/22/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-22T21:20:28+08:00">
-                2018-03-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
@@ -1067,6 +536,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -1087,8 +560,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -1132,6 +614,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1、通道基础"><span class="nav-number">1.</span> <span class="nav-text">1、通道基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1、打开通道"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.1、打开通道</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2、使用通道"><span class="nav-number">1.0.2.</span> <span class="nav-text">1.2、使用通道</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3、关闭通道"><span class="nav-number">1.0.3.</span> <span class="nav-text">1.3、关闭通道</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2、Scatter-Gather"><span class="nav-number">2.</span> <span class="nav-text">2、Scatter/Gather</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3、文件通道"><span class="nav-number">3.</span> <span class="nav-text">3、文件通道</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4、Socket通道"><span class="nav-number">4.</span> <span class="nav-text">4、Socket通道</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1、非阻塞模式"><span class="nav-number">4.0.1.</span> <span class="nav-text">4.1、非阻塞模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2、ServerSocketChannel"><span class="nav-number">4.0.2.</span> <span class="nav-text">4.2、ServerSocketChannel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3、SocketChannel"><span class="nav-number">4.0.3.</span> <span class="nav-text">4.3、SocketChannel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4、DatagramChannel"><span class="nav-number">4.0.4.</span> <span class="nav-text">4.4、DatagramChannel</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DEMO"><span class="nav-number">4.0.4.1.</span> <span class="nav-text">DEMO</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5、管道"><span class="nav-number">5.</span> <span class="nav-text">5、管道</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6、通道工具类"><span class="nav-number">6.</span> <span class="nav-text">6、通道工具类</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1245,10 +743,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 
