@@ -259,6 +259,125 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/24/java-nio-selector/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kx">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="那美克星">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/24/java-nio-selector/" itemprop="url">java-nio-selector</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-24T09:41:14+08:00">
+                2018-07-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/19/mysql/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -604,6 +723,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -641,7 +782,7 @@
 <h3 id="1-1、打开通道"><a href="#1-1、打开通道" class="headerlink" title="1.1、打开通道"></a>1.1、打开通道</h3><p>I/O 可以分为广义的两大类别：File I/O 和 Stream I/O。相应地有两种类型的通道，它们是文件（file）通道和套接字（socket）通道。 参考一下图，会发现有一个 <code>FileChannel</code> 类和三个 socket 通道类： <code>SocketChannel</code>、 <code>ServerSocketChannel</code> 和 <code>DatagramChannel</code>。 </p>
 <p>通道可以以多种方式创建。 <code>Socket</code> 通道有可以直接创建新 socket 通道的工厂方法。但是一个<code>FileChannel</code> 对象却只能通过在一个打开的 <code>RandomAccessFile</code>、 <code>FileInputStream</code> 或 <code>FileOutputStream</code>对象上调用 <code>getChannel( )</code>方法来获取。您不能直接创建一个 <code>FileChannel</code> 对象 </p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SocketChannel sc = SocketChannel.open( );</span><br><span class="line">sc.connect (<span class="keyword">new</span> InetSocketAddress (<span class="string">"somehost"</span>, someport));</span><br><span class="line">ServerSocketChannel ssc = ServerSocketChannel.open( );</span><br><span class="line">ssc.socket( ).bind (<span class="keyword">new</span> InetSocketAddress (somelocalport));</span><br><span class="line">DatagramChannel dc = DatagramChannel.open( );</span><br><span class="line">RandomAccessFile raf = <span class="keyword">new</span> RandomAccessFile (<span class="string">"somefile"</span>, <span class="string">"r"</span>);</span><br><span class="line">FileChannel fc = raf.getChannel( );</span><br></pre></td></tr></table></figure>
-<h3 id="1-2、使用通道"><a href="#1-2、使用通道" class="headerlink" title="1.2、使用通道"></a>1.2、使用通道</h3><p><img src="D:\DELL\npm\blog\source\_posts\1532328228905.png" alt="53232822890"></p>
+<h3 id="1-2、使用通道"><a href="#1-2、使用通道" class="headerlink" title="1.2、使用通道"></a>1.2、使用通道</h3><p><img src="java-nio-channel\1532328228905.png" alt="53232822890"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ReadableByteChannel</span> <span class="keyword">extends</span> <span class="title">Channel</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">read</span> <span class="params">(ByteBuffer dst)</span> <span class="keyword">throws</span> IOException</span>;<span class="number">57</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">WritableByteChannel</span> <span class="keyword">extends</span> <span class="title">Channel</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">write</span> <span class="params">(ByteBuffer src)</span> <span class="keyword">throws</span> IOException</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ByteChannel</span> <span class="keyword">extends</span> <span class="title">ReadableByteChannel</span>, <span class="title">WritableByteChannel</span></span>&#123; &#125;</span><br></pre></td></tr></table></figure>
 <p>​    通道可以是单向（unidirectional）或者双向的（bidirectional）。一个 channel 类可能实现定义<code>read( )</code>方法的 <code>ReadableByteChanne</code>l 接口，而另一个 <code>channel</code> 类也许实现 <code>WritableByteChannel</code> 接口以提供 <code>write( )</code>方法。实现这两种接口其中之一的类都是单向的，只能在一个方向上传输数据。如果一个类同时实现这两个接口，那么它是双向的，可以双向传输数据。 <code>ByteChannel</code> 接口本身并不定义新的 API 方法，它是一种用来聚集它自己以一个新名称继承的多个接口的便捷接口。 </p>
 <p>​    通道会连接一个特定 I/O 服务且通道实例（channel instance）的性能受它所连接的 I/O 服务的特征限制，记住这很重要。一个连接到只读文件的 Channel 实例不能进行写操作，即使该实例所属的类可能有 write( )方法。基于此，程序员需要知道通道是如何打开的，避免试图尝试一个底层 I/O服务不允许的操作。 </p>
@@ -667,13 +808,13 @@
 </blockquote>
 <hr>
 <h1 id="3、文件通道"><a href="#3、文件通道" class="headerlink" title="3、文件通道"></a>3、文件通道</h1><p>从图可以发现，<code>FileChannel</code> 类可以实现常用的 <code>read</code>， <code>write</code> 以及 <code>scatter/gather</code> 操作，同时它也提供了很多专用于文件的新方法。这些方法中的许多都是我们所熟悉的文件操作 </p>
-<p><img src="D:\DELL\npm\blog\source\_posts\1532332954565.png" alt="53233295456"></p>
+<p><img src="java-nio-channel\1532332954565.png" alt="53233295456"></p>
 <p><code>FileChannel</code>对象不能直接创建。一个<code>FileChannel</code>实例只能通过在一个打开的file对象（<code>RandomAccessFile</code>、 <code>FileInputStream</code>或 <code>FileOutputStream</code>）上调用<code>getChannel( )</code>方法获取 。调用<code>getChannel( )</code>方法会返回一个连接到相同文件的<code>FileChannel</code>对象且该<code>FileChannel</code>对象<br>具有与<code>file</code>对象相同的访问权限。</p>
 <p><code>FileChannel</code> 对象是线程安全<code>（thread-safe）</code>的。多个进程可以在同一个实例上并发调用方法而不会引起任何问题，不过并非所有的操作都是多线程的<code>（multithreaded）</code>。影响通道位置或者影响文件大小的操作都是单线程的<code>（single-threaded）</code>。如果有一个线程已经在执行会影响通道位置或文件大小的操作，那么其他尝试进行此类操作之一的线程必须等待。并发行为也会受到底层的操作系统或文件系统影响。 </p>
 <hr>
 <h1 id="4、Socket通道"><a href="#4、Socket通道" class="headerlink" title="4、Socket通道"></a>4、Socket通道</h1><p>​    新的 socket 通道类可以运行<strong>非阻塞模式</strong>并且是<strong>可选择的</strong>。这两个性能可以激活大程序（如网络服务器和中间件组件）巨大的<strong>可伸缩性和灵活性</strong>。 本节中我们会看到，再也没有为每个 socket 连接使用一个线程的必要了，也避免了管理大量线程所需的上下文交换总开销。借助新的 NIO 类，一个或几个线程就可以管理成百上千的活动 socket 连接了并且只有很少甚至可能没有性能损失。 </p>
 <p>​    从图可知，全部 socket 通道类（<code>DatagramChannel</code>、 <code>SocketChannel</code> 和<code>ServerSocketChannel</code>）都是由位于 <code>java.nio.channels.spi</code> 包中的 <code>AbstractSelectableChannel</code> 引申而来。这意味着我们可以用一个 Selector 对象来执行 socket 通道的有条件的选择（readiness selection）。选择和多路复用 I/O 会在第四章中讨论。 </p>
-<p><img src="D:\DELL\npm\blog\source\_posts\1532338664551.png" alt="53233866455"></p>
+<p><img src="java-nio-channel\1532338664551.png" alt="53233866455"></p>
 <p>请注意 <code>DatagramChannel</code> 和 <code>SocketChannel</code> 实现定义读和写功能的接口而 <code>ServerSocketChannel</code><br>不实现。 <code>ServerSocketChannel</code> 负责监听传入的连接和创建新的 <code>SocketChannel</code> 对象，它本身从不传输数据。 </p>
 <p>全部 socket 通道类（<code>DatagramChannel</code>、 <code>SocketChannel</code> 和 <code>ServerSocketChannel</code>）在被实例化时<br>都会创建一个对等 <code>socket</code> 对象。这些是我们所熟悉的来自 <code>java.net</code> 的类（<code>Socket</code>、 <code>ServerSocket</code><br>和 <code>DatagramSocket</code>），它们已经被更新以识别通道。对等 socket 可以通过调用 <code>socket( )</code>方法从一个<br>通道上获取。此外，这三个 java.net 类现在都有 <code>getChannel( )</code>方法。 </p>
 <p>虽然每个 socket 通道（在 <code>java.nio.channels</code> 包中）都有一个关联的 j<code>ava.net socket</code> 对象，却并非所有的 <code>socket</code> 都有一个关联的通道。如果用传统方式（直接实例化）创建了一个<code>Socket</code> 对象，它就不会有关联的 <code>SocketChannel</code> 并且它的 <code>getChannel( )</code>方法将总是返回 null。 </p>
@@ -757,7 +898,7 @@
 <p><code>java.nio.channels</code> 包中含有一个名为 <code>Pipe</code>（管道）的类。广义上讲，管道就是一个用来<br>在两个实体之间单向传输数据的导管。管道的概念对于 Unix（和类 Unix）操作系统的用户来说早<br>就很熟悉了。 Unix 系统中，管道被用来连接一个进程的输出和另一个进程的输入。 <code>Pipe</code> 类实现一<br>个管道范例，不过它所创建的管道是进程内（在 Java 虚拟机进程内部）而非进程间使用的。 </p>
 </blockquote>
 <p><code>Pipe</code> 类创建一对提供环回机制的 <code>Channel</code> 对象。这两个通道的远端是连接起来的，以便任何写在 <code>SinkChannel</code> 对象上的数据都能出现在 <code>SourceChannel</code> 对象上。 </p>
-<p><img src="D:\DELL\npm\blog\source\_posts\1532358532450.png" alt="53235853245"></p>
+<p><img src="java-nio-channel\1532358532450.png" alt="53235853245"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> java.nio.channels;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Pipe</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">// 创建Pipe</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Pipe <span class="title">open</span><span class="params">( )</span> <span class="keyword">throws</span> IOException</span></span><br><span class="line"><span class="function">    <span class="comment">// 返回SourceChannel</span></span></span><br><span class="line"><span class="function">    <span class="keyword">public</span> <span class="keyword">abstract</span> SourceChannel <span class="title">source</span><span class="params">( )</span></span>;</span><br><span class="line">    <span class="comment">// 返回SinkChannel</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> SinkChannel <span class="title">sink</span><span class="params">( )</span></span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">SourceChannel</span></span></span><br><span class="line"><span class="class">    	<span class="keyword">extends</span> <span class="title">AbstractSelectableChannel</span></span></span><br><span class="line"><span class="class">    	<span class="keyword">implements</span> <span class="title">ReadableByteChannel</span>, <span class="title">ScatteringByteChannel</span></span></span><br><span class="line"><span class="class">    <span class="title">public</span> <span class="title">static</span> <span class="title">abstract</span> <span class="title">class</span> <span class="title">SinkChannel</span></span></span><br><span class="line"><span class="class">    	<span class="keyword">extends</span> <span class="title">AbstractSelectableChannel</span></span></span><br><span class="line"><span class="class">    	<span class="keyword">implements</span> <span class="title">WritableByteChannel</span>, <span class="title">GatheringByteChannel</span></span></span><br><span class="line"><span class="class">&#125;</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>管道可以被用来仅在同一个 Java 虚拟机内部传输数据。虽然有更加有效率的方式来在线程之间传输数据，但是使用管道的好处在于封装性。生产者线程和用户线程都能被写道通用的 Channel API 中。根据给定的通道类型，相同的代码可以被用来写数据到一个文件、 socket 或管道。选择器可以被用来检查管道上的数据可用性，如同在 socket 通道上使用那样地简单。这样就可以允许单个用户线程使用一个 Selector 来从多个通道有效地收集数据，并可任意结合网络连接或本地工作线程使用。因此，这些对于可伸缩性、冗余度以及可复用性来说无疑都是意义重大的。 </p>
@@ -770,7 +911,7 @@
 <p>NIO 通道提供了一个全新的类似流的 I/O 隐喻，但是我们所熟悉的字节流以及字符读写器仍然存在并被广泛使用。通道可能最终会改进加入到 java.io 类中（这是一个实现细节），但是java.io 流所代表的 API 和读写器却不会很快消失（它们也不应该消失）。 </p>
 </blockquote>
 <p>一个工具类（<code>java.nio.channels.Channels</code> 的一个稍微重复的名称）定义了几种静态的工厂方法以使通道可以更加容易地同流和读写器互联。下图对这些方法做了一个汇总 </p>
-<p><img src="D:\DELL\npm\blog\source\_posts\1532359375876.png" alt="53235937587"></p>
+<p><img src="java-nio-channel\1532359375876.png" alt="53235937587"></p>
 
           
         
@@ -1103,14 +1244,32 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
           
 
           
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">Kategorien</span>
+              </a>
+            </div>
+          
 
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
           
 
         </nav>
